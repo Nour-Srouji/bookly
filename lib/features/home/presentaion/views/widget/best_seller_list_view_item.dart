@@ -18,7 +18,8 @@ final BookModel bookModel;
         height: 120,
         child: Row(
           children: [
-            
+          
+          
             CustomBookImage(
             
             imageUrl: bookModel.volumeInfo.imageLinks!.thumbnail),
