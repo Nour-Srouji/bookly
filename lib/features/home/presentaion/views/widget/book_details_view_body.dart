@@ -1,3 +1,4 @@
+import 'package:bookly/features/home/data/models/book_model/book_model.dart';
 import 'package:bookly/features/home/presentaion/views/widget/book_rating.dart';
 import 'package:bookly/features/home/presentaion/views/widget/books_action.dart';
 import 'package:bookly/features/home/presentaion/views/widget/similiar_books_list_view.dart';
@@ -7,8 +8,8 @@ import 'custom_book_details_app_bar.dart';
 import 'custom_book_image.dart';
 
 class BookDetailsViewBooy extends StatelessWidget {
-  const BookDetailsViewBooy({super.key});
-
+  const BookDetailsViewBooy({super.key, required this.book});
+final BookModel book;
   @override
   Widget build(BuildContext context) {
     var width = MediaQuery.of(context).size.width;
@@ -22,25 +23,32 @@ class BookDetailsViewBooy extends StatelessWidget {
         ),
         Padding(
           padding: EdgeInsets.symmetric(horizontal: width * .1),
-          child: const SizedBox(
+          child:  SizedBox(
               height: 270,
               width: 200,
               child: CustomBookImage(
                 imageUrl:
-                 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDhrEonKm0pDm7xvsVPOyCOTk3hTX-bwZAfw&s',
+                book.volumeInfo.imageLinks?.thumbnail ?? ''
               )),
         ),
-        const Text(
-          'The jungle Book',
-          style: TextStyle(
-              fontSize: 30,
-              fontWeight: FontWeight.w600,
-              fontStyle: FontStyle.italic),
-        ),
+         FittedBox(
+           child: Padding(
+             padding: const EdgeInsets.all(8.0),
+             child: Text(
+              book.volumeInfo.title!,
+              textAlign: TextAlign.center,
+              style: const TextStyle(
+                  fontSize: 30,
+                  fontWeight: FontWeight.w600,
+                  fontStyle: FontStyle.italic,
+                  ),
+                     ),
+           ),
+         ),
         //  const SizedBox(height: 4),
-        const Text(
-          'Rudy kihkd',
-          style: TextStyle(
+         Text(
+          book.volumeInfo.authors?[0] ?? '',
+          style: const TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.w600,
               fontStyle: FontStyle.italic),
@@ -48,13 +56,14 @@ class BookDetailsViewBooy extends StatelessWidget {
         const SizedBox(
           height: 10,
         ),
-        const Center(child: BookRating2(
-          rating: 5,count: 250,
+         Center(child: BookRating2(
+          rating: book.volumeInfo.averageRating ?? 0,
+          count: book.volumeInfo.ratingsCount ?? 0,
         )),
         const SizedBox(
           height: 18,
         ),
-        const BooksAction(),
+         BooksAction(bookModel: book),
         const SizedBox(
           height: 40,
         ),

@@ -41,7 +41,7 @@ class SearchResulteListView extends StatelessWidget {
         shrinkWrap: true, // انو تاخد الارتفاع تبع الابن
         itemCount: 10,
         itemBuilder: (context, index) {
-          return const Text("rrrrrrrrrrrrrrrrrr");
+          return const Text("data");
           //const BookListViewItem();
         });
   }

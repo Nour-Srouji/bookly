@@ -6,4 +6,6 @@ abstract class HomeRepo {
   // منحدد التابع شو رح يعمل
   Future<Either<Failure, List<BookModel>>> fetchNewsBooks();
   Future<Either<Failure, List<BookModel>>> fetchFeatureBooks();
+    Future<Either<Failure, List<BookModel>>> fetchSimilarBooks({required String category});
+
 }

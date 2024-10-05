@@ -33,21 +33,21 @@ class BookRating2 extends StatelessWidget {
   final int count;
   @override
   Widget build(BuildContext context) {
-    return const Row(
+    return  Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Icon(
+        const Icon(
           Icons.star_rate,
           color: Colors.yellow,
         ),
-        Text("4.8",
-            style: TextStyle(
+        Text(  rating.toString() ,
+            style: const TextStyle(
                 fontStyle: FontStyle.italic,
                 fontSize: 20,
                 fontFamily: AutofillHints.addressCityAndState)),
-        SizedBox(width: 8),
-        Text("(245)",
-            style: TextStyle(
+        const SizedBox(width: 8),
+        Text('($count)',
+            style: const TextStyle(
                 fontStyle: FontStyle.italic,
                 fontSize: 20,
                 fontFamily: AutofillHints.addressCityAndState)),

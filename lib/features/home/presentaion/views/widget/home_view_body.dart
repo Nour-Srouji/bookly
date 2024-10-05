@@ -10,6 +10,7 @@ class HomeViewBody extends StatelessWidget {
   Widget build(BuildContext context) {
 //CustomScrollView لجعل كامل الشاشة ضمن سكرول
     return const CustomScrollView(
+      physics:  BouncingScrollPhysics(),
       slivers: [
         SliverToBoxAdapter(
           child: Column(
@@ -22,7 +23,7 @@ class HomeViewBody extends StatelessWidget {
                 child: Padding(
                   padding: EdgeInsets.all(8.0),
                   child: Text(
-                    'Best Seller',
+                    'Newset Books',
                     style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
                     textAlign: TextAlign.right,
                   ),

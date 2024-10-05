@@ -1,4 +1,3 @@
-//import 'package:bookly/core/constant.dart';
 import 'package:bookly/features/home/data/models/book_model/book_model.dart';
 import 'package:bookly/features/home/presentaion/views/widget/custom_book_image.dart';
 import 'package:flutter/widgets.dart';
@@ -12,22 +11,19 @@ final BookModel bookModel;
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        GoRouter.of(context).push('/bookdetailsview');
+        GoRouter.of(context).push('/bookdetailsview',
+        extra:bookModel 
+        );
       },
       child: SizedBox(
-        height: 120,
+        height: 125,
         child: Row(
           children: [
-          
-          
+            const SizedBox(width: 10),
             CustomBookImage(
-            
-            imageUrl: bookModel.volumeInfo.imageLinks!.thumbnail),
-         
-            // Padding(
-            //   padding: const EdgeInsets.symmetric(horizontal: 10),
-            //   child: Image.asset(tiger),
-            // ),
+            imageUrl: bookModel.volumeInfo.imageLinks?.thumbnail ?? ''
+            ),
+            const SizedBox(width: 70),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -64,8 +60,8 @@ final BookModel bookModel;
                         width: 160,
                       ),
                       BookRating2(
-                        rating:bookModel.volumeInfo.averageRating! ,
-                        count: bookModel.volumeInfo.ratingsCount!,
+                        rating:bookModel.volumeInfo.averageRating?.round() ?? 0 ,
+                        count: bookModel.volumeInfo.ratingsCount ?? 0,
                         )
                     ],
                   )
