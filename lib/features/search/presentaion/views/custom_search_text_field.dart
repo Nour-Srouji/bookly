@@ -12,7 +12,6 @@ class CustomSearchTextField extends StatelessWidget {
             enabledBorder: OutlineInputBorder(
                 borderSide: const BorderSide(color: Colors.white),
                 borderRadius: BorderRadius.circular(12)),
-
             //     focusedBorder:  ,
             hintText: "Search",
             suffixIcon: IconButton(

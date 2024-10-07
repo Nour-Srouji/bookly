@@ -1,5 +1,6 @@
 //import 'package:bookly/features/home/presentaion/views/widget/best_seller_list_view_item.dart';
 import 'package:bookly/features/search/presentaion/views/custom_search_text_field.dart';
+import 'package:bookly/features/search/presentaion/views/search_resulte_list_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -32,17 +33,3 @@ class SearchViewBody extends StatelessWidget {
   }
 }
 
-class SearchResulteListView extends StatelessWidget {
-  const SearchResulteListView({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return ListView.builder(
-        shrinkWrap: true, // انو تاخد الارتفاع تبع الابن
-        itemCount: 10,
-        itemBuilder: (context, index) {
-          return const Text("data");
-          //const BookListViewItem();
-        });
-  }
-}
