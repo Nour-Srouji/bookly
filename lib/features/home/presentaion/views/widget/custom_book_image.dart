@@ -16,14 +16,6 @@ class CustomBookImage extends StatelessWidget {
             imageUrl: imageUrl,
             errorWidget: (context, url, error) => const Icon(Icons.error),
           )
-          // Container(
-          //   height: 100,
-          //   width: 130,
-          //   decoration: BoxDecoration(
-          //       borderRadius: BorderRadius.circular(6),
-          //       image:  DecorationImage(
-          //           fit: BoxFit.fill, image: NetworkImage(imageUrl))),
-          // ),
           ),
     );
   }

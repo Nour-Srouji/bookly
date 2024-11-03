@@ -4,16 +4,17 @@ import 'package:bookly/core/utils/service_locater.dart';
 import 'package:bookly/features/home/data/repos/home_repo_impl.dart';
 import 'package:bookly/features/home/presentaion/manage/featured_books_cubit/featured_books_cubit.dart';
 import 'package:bookly/features/home/presentaion/manage/newest_books_cubit/newest_books_cubit.dart';
+import 'package:bookly/features/home/presentaion/manage/search_books_cubit/search_books_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() {
   setupServerLocat();
-  runApp(const BooklyApp());
+  runApp( BooklyApp());
 }
 
 class BooklyApp extends StatelessWidget {
-  const BooklyApp({super.key});
+   BooklyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -28,6 +29,11 @@ class BooklyApp extends StatelessWidget {
           create: (context) => NewestBooksCubit(
             getIt.get<HomeRepoImpl>(),
           )..fetchNewestBooks(),
+        ),
+         BlocProvider(
+          create: (context) => SearchBooksCubit(
+            getIt.get<HomeRepoImpl>(),
+          )..fetchSearchBooks(query: ''),
         ),
       ],    
       child: MaterialApp.router(

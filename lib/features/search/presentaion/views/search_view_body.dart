@@ -1,31 +1,38 @@
-//import 'package:bookly/features/home/presentaion/views/widget/best_seller_list_view_item.dart';
+import 'package:bookly/core/widget/custom_error_widget.dart';
+import 'package:bookly/core/widget/custom_loading_indicator.dart';
+import 'package:bookly/features/home/presentaion/manage/search_books_cubit/search_books_cubit.dart';
+import 'package:bookly/features/home/presentaion/views/widget/best_seller_list_view_item.dart';
 import 'package:bookly/features/search/presentaion/views/custom_search_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SearchViewBody extends StatelessWidget {
   const SearchViewBody({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const Padding(
-      padding: EdgeInsets.symmetric(horizontal: 30),
+    return  Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 30),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          CustomSearchTextField(),
-          SizedBox(
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: CustomSearchTextField(),
+          ),
+          const SizedBox(
             height: 10,
           ),
-          Text(
+          const Text(
             'Search Result',
             style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
             textAlign: TextAlign.right,
           ),
-          SizedBox(
+          const SizedBox(
             height: 16,
           ),
-          Expanded(child: SearchResulteListView())
+          const Expanded(child: SearchResulteListView())
         ],
       ),
     );
@@ -37,12 +44,27 @@ class SearchResulteListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-        shrinkWrap: true, // انو تاخد الارتفاع تبع الابن
-        itemCount: 10,
-        itemBuilder: (context, index) {
-          return const Text("data");
-          //const BookListViewItem();
-        });
+    return BlocBuilder<SearchBooksCubit, SearchBooksState>(
+      builder: (context, state) {
+        if (state is SearchBooksSuccess) {
+  return ListView.builder(
+      shrinkWrap: true, // انو تاخد الارتفاع تبع الابن
+      itemCount:state.books.length,
+      itemBuilder: (context, index) {
+        //   return const Text("data");
+    return  Expanded(
+      child: BookListViewItem(
+            bookModel: state.books[index]
+          ),
+    );
+      });
+}else if(state is SearchBooksFailure){
+    return CustomErrorWidget(errMessage: state.errMessage);
+}else{
+    return const CustomLoadingIndicator();
+
+}
+      },
+    );
   }
 }

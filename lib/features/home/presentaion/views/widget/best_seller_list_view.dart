@@ -38,14 +38,3 @@ class BestSellerListView extends StatelessWidget {
     );
   }
 }
-
-//  getBook(BookModel bookModel){
-//   if ( books[index] == null)
-//   { 
-//     return 'Not Avaliable';
-//   }
-//   else 
-//   {
-//     return bookModel: state.books[index];
-//   }
-// }
