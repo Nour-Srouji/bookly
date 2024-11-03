@@ -3,6 +3,7 @@ import 'package:bookly/core/widget/custom_loading_indicator.dart';
 import 'package:bookly/features/home/presentaion/manage/search_books_cubit/search_books_cubit.dart';
 import 'package:bookly/features/home/presentaion/views/widget/best_seller_list_view_item.dart';
 import 'package:bookly/features/search/presentaion/views/custom_search_text_field.dart';
+import 'package:bookly/features/search/presentaion/views/search_resulte_list_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -39,6 +40,7 @@ class SearchViewBody extends StatelessWidget {
   }
 }
 
+<<<<<<< HEAD
 class SearchResulteListView extends StatelessWidget {
   const SearchResulteListView({super.key});
 
@@ -68,3 +70,5 @@ class SearchResulteListView extends StatelessWidget {
     );
   }
 }
+=======
+>>>>>>> dd9bd6aba42fe7753f595a8504d895d8f5a7a410
